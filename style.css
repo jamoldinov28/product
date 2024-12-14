@@ -1,0 +1,255 @@
+*{
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.container{
+    max-width: 1700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+img{
+    max-width: 100%;
+}
+a{
+    color: inherit;
+    text-decoration: inherit;
+}
+li{
+    list-style: none;
+}
+button, input{
+    outline: none;
+}
+button:active,
+.navbar__item:active{
+    transform: scale(.96);
+}
+
+/* Header */
+.header{
+    background: #000000c8;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+}
+.navbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__image{
+    width: 200px;
+}
+.navbar__collection{
+    display: flex;
+    gap: 80px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 400;
+    align-items: center;
+}
+input{
+    position: relative;
+    padding: 3px 10px;
+    border: 1px solid #ddd;
+    width: 270px;
+    height: 30px;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #ddd;
+
+}
+.navbar__btn{
+    width: 100px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background: #4ae74a;
+    position: absolute;
+    padding: 3px 10px;
+    margin-left: -100px;
+    border-radius: 0  3px 3px 0 ;
+}
+
+
+.wrapper{
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12px;
+    flex-wrap: wrap;
+}
+.card{
+    background: #fff;
+    width: 350px;
+    height: 390px;
+    margin-top: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 3px 3px #ddd;
+}
+.card:hover{
+    transform: scale(.99);
+}
+.card img{
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+h2{
+    font-size: 16px;
+    font-weight: 600;
+}
+p{
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.card button{
+    padding: 5px;
+    margin-top: 5px;
+    background: dodgerblue;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+.loading{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12px;
+    margin-top: 10px;
+}
+.loading__item{
+    padding: 12px;
+}
+.loading__image{
+    width: 100%;
+    height: 250px;
+    background: #ddd;
+}
+.loading__title{
+    width: 80%;
+    height: 30px;
+    margin-top: 12px;
+    background: #ddd;
+}
+.loading__title:last-child{
+    width: 60%;
+}
+.to-left{
+    background: linear-gradient(90deg, #ddd, #aaa, #ddd);
+    background-size: 200%;
+}
+
+
+
+.lds-dual-ring,
+.lds-dual-ring:after {
+  box-sizing: border-box;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6.4px solid currentColor;
+  border-color: currentColor transparent currentColor transparent;
+}
+
+
+
+
+.btn__seemore{
+    border-radius: 5px;
+    display: block;
+    margin: 40px auto;
+    padding: 10px;
+    background: dodgerblue;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.btn__seemore:disabled{
+    opacity: .6;
+    cursor: default;
+}
+.btn__seemore:active{
+    transform: scale(0.95);
+}
+.btn__seemore:disabled:active{
+    transform: scale(1);
+}
+
+
+.back-top{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #000;
+    color: #fff;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 50%;
+    position: fixed;
+    transition: .5s;
+    bottom: -40px;
+    right: 20px;
+    transform: scale(0);
+}
+
+.footer{
+    background: #000;
+    width: 100%;
+    height: 40px;
+    padding:  50px 0;
+    margin-top: 150px;
+}
+.footer__text{
+    flex: 1;
+    display: flex;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 200;
+    gap: 40px;
+}
+.footer__wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.footer__link{
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+a{
+    margin-left: 10px;
+    color: #fff;
+}
