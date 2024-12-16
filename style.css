@@ -28,10 +28,12 @@ button:active,
 .navbar__item:active{
     transform: scale(.96);
 }
+body{
+    background: #ddd;
+}
 
-/* Header */
 .header{
-    background: #000000c8;
+    background: #777575c8;
     position: fixed;
     z-index: 100;
     top: 0;
@@ -65,8 +67,6 @@ input{
     width: 270px;
     height: 30px;
     border-radius: 3px;
-    box-shadow: 0 0 3px #ddd;
-
 }
 .navbar__btn{
     width: 100px;
@@ -84,24 +84,20 @@ input{
 
 .wrapper{
     margin-top: 100px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 12px;
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
 }
 .card{
-    background: #fff;
+    background: #c9c5c5;
     width: 350px;
-    height: 390px;
+    height: 410px;
     margin-top: 10px;
     border-radius: 20px;
     cursor: pointer;
     border: 1px solid #ddd;
     padding: 15px;
-    box-shadow: 0 3px 3px #ddd;
-}
-.card:hover{
-    transform: scale(.99);
 }
 .card img{
     width: 100%;
@@ -109,19 +105,32 @@ input{
     object-fit: contain;
 }
 h2{
-    font-size: 16px;
-    font-weight: 600;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    background-image: linear-gradient(to right, #f58529, #dd2a7b, #8134af, #515bd4);
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
 }
 p{
+    color: #fff;
     font-size: 18px;
     font-weight: 400;
-    color: #000;
     margin-top: 10px;
     margin-bottom: 10px;
+    background-image: linear-gradient(to right, #f58529, #dd2a7b, #8134af, #515bd4);
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+   
 }
 .card button{
+    width: 100px;
+    height: 30px;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
     padding: 5px;
-    margin-top: 5px;
+    margin-top: 19px;
     background: dodgerblue;
     border: none;
     border-radius: 5px;
@@ -137,18 +146,18 @@ p{
     margin-top: 10px;
 }
 .loading__item{
+    border: 1px solid #ddd;
+    border-radius: 20px;
     padding: 12px;
 }
 .loading__image{
     width: 100%;
     height: 250px;
-    background: #ddd;
 }
 .loading__title{
     width: 80%;
     height: 30px;
     margin-top: 12px;
-    background: #ddd;
 }
 .loading__title:last-child{
     width: 60%;
@@ -157,9 +166,6 @@ p{
     background: linear-gradient(90deg, #ddd, #aaa, #ddd);
     background-size: 200%;
 }
-
-
-
 .lds-dual-ring,
 .lds-dual-ring:after {
   box-sizing: border-box;
@@ -179,15 +185,12 @@ p{
   border: 6.4px solid currentColor;
   border-color: currentColor transparent currentColor transparent;
 }
-
-
-
-
 .btn__seemore{
+    width: 100px;
+    height: 30px;
     border-radius: 5px;
     display: block;
     margin: 40px auto;
-    padding: 10px;
     background: dodgerblue;
     border: none;
     color: #fff;
@@ -203,8 +206,6 @@ p{
 .btn__seemore:disabled:active{
     transform: scale(1);
 }
-
-
 .back-top{
     display: inline-block;
     width: 50px;
@@ -224,18 +225,17 @@ p{
 }
 
 .footer{
-    background: #000;
+    background: #777575c8;
     width: 100%;
     height: 40px;
     padding:  50px 0;
-    margin-top: 150px;
 }
 .footer__text{
     flex: 1;
     display: flex;
     color: #fff;
     font-size: 18px;
-    font-weight: 200;
+    font-weight: bolder;
     gap: 40px;
 }
 .footer__wrapper{
@@ -249,7 +249,35 @@ p{
     flex-wrap: wrap;
     align-items: center;
 }
-a{
+.fa-telegram{
+    color: #515bd4;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.fa-phone{
+    color: #48d348;
+    font-size: 20px;
     margin-left: 10px;
-    color: #fff;
+}
+.fa-instagram{
+    margin-right: 20px;
+    background-image: linear-gradient(to right, #f58529, #dd2a7b, #8134af, #515bd4);
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
+
+@media (max-width:840px) {
+    input,button{
+        display: none;
+    }
+    .navbar__collection{
+        gap: 20px;
+        font-size: 16px;
+    }
+    .navbar__logo{
+        width: 100px;
+    }
+    .footer__text{
+        gap: 10px;
+    }
 }
