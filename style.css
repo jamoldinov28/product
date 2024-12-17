@@ -6,7 +6,7 @@
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 .container{
-    max-width: 1700px;
+    max-width: 1900px;
     width: 100%;
     margin: 0 auto;
     padding: 0 16px;
@@ -64,30 +64,65 @@ input{
     position: relative;
     padding: 3px 10px;
     border: 1px solid #ddd;
-    width: 270px;
-    height: 30px;
+    width: 500px;
+    height: 39px;
     border-radius: 3px;
 }
 .navbar__btn{
-    width: 100px;
-    height: 30px;
+    width: 40px;
+    height: 39px;
+    font-size: 20px;
     border: none;
     cursor: pointer;
     color: #fff;
-    background: #4ae74a;
+    background: grey;
     position: absolute;
     padding: 3px 10px;
-    margin-left: -100px;
+    margin-left: -40px;
     border-radius: 0  3px 3px 0 ;
 }
 
 
+.collection{
+    margin-top: 80px;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    overflow: auto;
+}
+.collection::-webkit-scrollbar{
+    height: 0;
+}
+.item{
+    background: #c9c5c5;
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+.item.active{
+    background: grey;
+}
+.category__loading{
+    display: flex;
+    gap: 10px;
+}
+.category__loading > div{
+    width: 180px;
+    height: 32px;
+    margin-top: 80px;
+    border-radius: 6px;
+
+}
 .wrapper{
-    margin-top: 100px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 50px;
+    gap: 20px;
 }
 .card{
     background: #c9c5c5;
@@ -121,7 +156,6 @@ p{
     background-image: linear-gradient(to right, #f58529, #dd2a7b, #8134af, #515bd4);
     background-clip: text; 
     -webkit-text-fill-color: transparent;
-   
 }
 .card button{
     width: 100px;
@@ -135,15 +169,13 @@ p{
     border: none;
     border-radius: 5px;
     color: #fff;
-    cursor: pointer;
-    
+    cursor: pointer; 
 }
 
 .loading{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 12px;
-    margin-top: 10px;
 }
 .loading__item{
     border: 1px solid #ddd;
@@ -225,6 +257,7 @@ p{
 }
 
 .footer{
+    margin-top: 230px;
     background: #777575c8;
     width: 100%;
     height: 40px;
@@ -235,7 +268,7 @@ p{
     display: flex;
     color: #fff;
     font-size: 18px;
-    font-weight: bolder;
+    font-weight: 400;
     gap: 40px;
 }
 .footer__wrapper{

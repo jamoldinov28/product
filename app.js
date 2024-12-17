@@ -3,10 +3,14 @@ const loadingEl = document.querySelector(".loading")
 const btnSeemore = document.querySelector(".btn__seemore")
 const backtopEl = document.querySelector(".back-top")
 const navbrEL = document.querySelector(".navbar")
+const collectionEl = document.querySelector(".collection")
+const categoryLoadingEl = document.querySelector(".category__loading")
+
 const BASE_URL = "https://dummyjson.com"
 
-const perPageCount = 8
-let total = 0
+const perPageCount = 5
+let offset = 0
+let productEndpoint = "/products"
 
 async function fetchData(endpoint){
     const response = await fetch(`${BASE_URL}${endpoint}`)
@@ -14,7 +18,12 @@ async function fetchData(endpoint){
         .json()
         .then((res)=> {
             createCard(res)
-            total = res.total
+            if(res.total <= perPageCount + (offset * perPageCount)){
+                btnSeemore.style.display = "none"
+            }else{
+                btnSeemore.style.display = "block"
+
+            }            
         })
         .catch((err) => console.log(err))
         .finally(()=> {
@@ -26,7 +35,7 @@ async function fetchData(endpoint){
 
 window.addEventListener("load", ()=>{
     createLoading(perPageCount)
-    fetchData(`/products?limit=${perPageCount}`)
+    fetchData(`${productEndpoint}?limit=${perPageCount}`)
     fetchCategory("/products/category-list")
 })
 
@@ -59,20 +68,13 @@ function createCard(data){
     })
 }
 
-let offset = 0
 btnSeemore.addEventListener("click", ()=>{
     btnSeemore.setAttribute("disabled", true)
     btnSeemore.textContent = "Loading..."
     createLoading(perPageCount)
     offset++
-    if(total <= perPageCount + (offset * perPageCount)){
-        btnSeemore.style.display = "none"
-    }
-    fetchData(`/products?limit=${perPageCount}&skip=${offset * perPageCount}`)
+    fetchData(`${productEndpoint}?limit=${perPageCount}&skip=${offset * perPageCount}`)
 })
-
-
-
 
 window.addEventListener("scroll", ()=>{   
     console.log(document.documentElement.scrollTop);
@@ -85,4 +87,45 @@ window.addEventListener("scroll", ()=>{
         backtopEl.style.bottom = "-40px"
         backtopEl.style.transform = "scale(0)"
     }
+})
+
+async function fetchCategory(endpoint){
+    const response = await fetch(`${BASE_URL}${endpoint}`)
+    response
+        .json()
+        .then(res => {
+            createCategory(res);
+        })
+        .catch()
+        .finally(()=>{
+            categoryLoadingEl.style.display = "none"
+        })
+}
+
+function createCategory(data){
+    ["all", ...data].forEach((category)=> {
+        const listEl = document.createElement("li")
+        listEl.className = category === "all" ? "item active" : "item"
+        listEl.dataset.category = category === "all" ? "/product" : `/products/category/${category}`
+        listEl.textContent = category
+        collectionEl.appendChild(listEl)
+        listEl.addEventListener("click", (e)=>{
+            let endpoint = e.target.dataset.category
+            productEndpoint = endpoint
+            offset = 0
+            wrapperEl.innerHTML = null
+            fetchData(`${endpoint}?limit=${perPageCount}`)
+            document.querySelectorAll(".collection .item").forEach((i)=>{
+                i.classList.remove("active")
+            })
+            e.target.classList.add("active")
+        })
+    })
+}
+
+wrapperEl.addEventListener("click", e => {
+    if(e.target.tagName === "IMG"){
+        open(`/pages/product.html?id=${e.target.dataset.id}`, "_self")
+    }
+    
 })
