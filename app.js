@@ -34,6 +34,8 @@ async function fetchData(endpoint){
 }
 
 window.addEventListener("load", ()=>{
+    collectionEl.style.display = "none"
+
     createLoading(perPageCount)
     fetchData(`${productEndpoint}?limit=${perPageCount}`)
     fetchCategory("/products/category-list")
@@ -59,7 +61,7 @@ function createCard(data){
         const divEl = document.createElement("div")
         divEl.className = "card"
         divEl.innerHTML = `
-            <img src=${product.thumbnail} alt="rasm">
+            <img data-id=${product.id}  src=${product.thumbnail} alt="rasm">
             <h2>${product.title}</h2>
             <p>${product.price} USD</p>
             <button>Buy now</button>
@@ -99,6 +101,8 @@ async function fetchCategory(endpoint){
         .catch()
         .finally(()=>{
             categoryLoadingEl.style.display = "none"
+            collectionEl.style.display = "flex"
+
         })
 }
 
@@ -106,7 +110,7 @@ function createCategory(data){
     ["all", ...data].forEach((category)=> {
         const listEl = document.createElement("li")
         listEl.className = category === "all" ? "item active" : "item"
-        listEl.dataset.category = category === "all" ? "/product" : `/products/category/${category}`
+        listEl.dataset.category = category === "all" ? "/products" : `/products/category/${category}`
         listEl.textContent = category
         collectionEl.appendChild(listEl)
         listEl.addEventListener("click", (e)=>{
@@ -123,7 +127,7 @@ function createCategory(data){
     })
 }
 
-wrapperEl.addEventListener("click", e => {
+wrapperEl.addEventListener("click", (e) => {
     if(e.target.tagName === "IMG"){
         open(`/pages/product.html?id=${e.target.dataset.id}`, "_self")
     }
